@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="me1.jpg">
+    <title>Blog || Email Validator</title>
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="Index-Style.css">
+    <link rel="stylesheet" href="blog.css">
+
+    <style>
+      *{
+        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Poppins', sans-serif;
+      }
+  .blogbox {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0; /* উপরে নিচে একটু গ্যাপ থাকবে */
+  }
+
+  .maincontent {
+    width: 70%;
+    border-radius: 15px; /* কোণাগুলো গোল করার জন্য */
+    overflow: hidden;
+  }
+
+  .bannerbox {
+    width: 100%;
+    height: 400px;
+    background-image: url(blog1.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .textdiv {
+    color: white;
+    text-align: center;
+    padding: 30px;
+  }
+
+  /* মোবাইল ফ্রেন্ডলি করার জন্য */
+  @media (max-width: 768px) {
+    .maincontent {
+      width: 95%; /* মোবাইলে বক্সটি বড় দেখাবে */
+    }
+    .bannerbox {
+      height: 250px; /* মোবাইলে ফটোর উচ্চতা একটু কমবে */
+    }
+  }
+
+  .info-container {
+    display: flex;
+    justify-content: center; /* মাঝখানে রাখার জন্য */
+    margin-top: 20px;
+}
+
+.info-text {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    color: #7b7d7f;
+    max-width: 900px; /* লেখাটি যেন খুব বেশি ছড়িয়ে না যায় */
+    text-align: left; /* ডান পাশের দাগের সাথে লেখাটি মানানসই করতে */
+    
+    /* ডান পাশে লম্বা দাগ তৈরির ম্যাজিক */
+    border-left: 4px solid #38bdf8; 
+    
+    /* দাগ এবং লেখার মাঝে একটু গ্যাপ দেওয়ার জন্য */
+    line-height: 1.5;
+}
+
+/* মোবাইলের জন্য ছোট অ্যাডজাস্টমেন্ট */
+@media (max-width: 600px) {
+    .info-text {
+        font-size: 0.95rem;
+        border-right-width: 3px;
+        padding-right: 15px;
+    }
+}
+
+.meta-data {
+    display: flex;
+    justify-content: space-between; /* একটি বামে এবং একটি ডানে পাঠাবে */
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #334155; /* হালকা একটি দাগ উপরে দিলে দেখতে ভালো লাগবে */
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.author {
+    font-weight: bold;
+    color: #38bdf8; /* আপনার ব্র্যান্ড কালার */
+}
+.tag{
+  background: #555;
+  padding: 5px;
+  border-radius: 50px;
+  color: #fff;
+}
+
+.date {
+    font-style: italic;
+}
+
+/* মোবাইল রেসপন্সিভ (ছোট স্ক্রিনে নিচে নিচে আসবে) */
+@media (max-width: 480px) {
+    .meta-data {
+        flex-direction: column; /* মোবাইলে উপরে-নিচে দেখাবে */
+        gap: 8px;
+        text-align: center;
+    }
+}
+.content-area {
+    margin-top: 30px;
+    text-align: left; /* পড়ার সুবিধার জন্য বাম দিক থেকে শুরু */
+    line-height: 1.8; /* লাইনের মাঝে গ্যাপ থাকলে পড়তে আরাম লাগে */
+    color: #e2e8f0;
+}
+.content-area p {
+    margin-bottom: 20px; /* প্রতিটি প্যারাগ্রাফের মাঝে গ্যাপ */
+    font-size: 1.1rem;
+}
+@media (max-width: 600px) {
+    .content-area p {
+        font-size: 1rem;
+    }
+}
+.content-area h2 {
+    margin: 30px 0 15px;
+    color: #38bdf8;
+    border-bottom: 2px solid #334155;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.project-video {
+    width: 550px; /* ভিডিওটি বক্সের সমান চওড়া হবে */
+    display: block;
+    height: auto;
+}
+.project-video-mobile{
+  width: 150px;
+}
+/* মোবাইলে ভিডিওর ওপর-নিচে গ্যাপ কিছুটা কমানোর জন্য */
+@media (max-width: 600px) {
+    .video-container {
+        margin: 20px 0;
+    }
+}
+
+/* HTML File view */
+.copy-btn {
+    background: #444;
+    color: #fff;
+    border: none;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.copy-btn:hover {
+    background: #38bdf8;
+}
+.code-header{
+    background: #2d2d2d;
+    border-radius: 10px 10px 0 0;
+}
+.code-body {
+    max-height: 500px; 
+    overflow-y: auto;
+    background: #444;
+}
+
+/* scrollbar mordern look */
+/* ১. পুরো স্ক্রলবারটির উইডথ সেট করা */
+.code-body::-webkit-scrollbar {
+    width: 5px;        /* ভার্টিক্যাল স্ক্রলবারের চওড়া */
+    height: 5px;       /* হরাইজন্টাল স্ক্রলবারের উচ্চতা */
+}
+
+/* ২. স্ক্রলবারের পেছনের অংশ (Track) */
+.code-body::-webkit-scrollbar-track {
+    background: #1e1e1e; /* কোড বক্সের ব্যাকগ্রাউন্ডের সাথে মিলিয়ে */
+    border-radius: 0 0 8px 0;
+}
+
+/* ৩. স্ক্রলবারের যে অংশটি টেনে সরানো হয় (Thumb) */
+.code-body::-webkit-scrollbar-thumb {
+    background: #00eaff;    /* স্ক্রলবারের রঙ */
+    border-radius: 10px;
+    border: 1px solid #1e1e1e; /* থাম্বের চারপাশে একটু ফাঁকা দেখানোর জন্য */
+}
+
+/* ৪. থাম্বের ওপর মাউস নিলে রঙ পরিবর্তন (Hover) */
+.code-body::-webkit-scrollbar-thumb:hover {
+    background: #555;    /* হোভার করলে একটু হালকা হবে */
+}
+
+/* ৫. কর্নার (যেখানে দুই দিকের স্ক্রলবার মেশে) */
+.code-body::-webkit-scrollbar-corner {
+    background: #1e1e1e;
+}
+.photo{
+  width: 100%;
+}
+@media (max-width: 600px) {
+    .photo{
+      width: 350px;
+    }
+}
+
+.share{
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background: #1877F2;
+}
+
+/* share link */
+/* Share Button Style */
+.share-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.share-btn {
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+}
+
+.share-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    display: none; /* শুরুতে লুকানো থাকবে */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Box */
+.modal-box {
+    background: #1e293b;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #334155;
+    color: white;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 10px;
+}
+
+.close-modal {
+    font-size: 28px;
+    cursor: pointer;
+    color: #94a3b8;
+}
+
+.link-copy-area {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.link-copy-area input {
+    flex: 1;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #38bdf8;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.link-copy-area button {
+    background: #38bdf8;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.social-share-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #cbd5e1;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.social-item img {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 8px;
+    filter: invert(1); /* সাদা দেখানোর জন্য, যদি ব্যাকগ্রাউন্ড ডার্ক হয় */
+    padding: 8px;
+    background: #746c6c;
+    border-radius: 50%;
+}
+
+.social-item:hover {
+    color: #38bdf8;
+    transform: translateY(-3px);
+}
+
+.social-item.whatsapp:hover img { background: #25D366; filter: invert(0); }
+.social-item.facebook:hover img { background: #1877F2; filter: invert(0); }
+.social-item.twitter:hover img { background: #ffffff; filter: invert(0); }
+.social-item.instagram:hover img {
+    /* ইন্সটাগ্রামের লোগোর রঙের মিশ্রণ */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    filter: invert(0); /* কালারফুল গ্রাডিয়েন্টে আইকনটি সাদা না দেখিয়ে কালো বা গ্রে দেখাবে */
+    box-shadow: 0 4px 15px rgba(214, 36, 159, 0.5); /* একটু গ্লো এফেক্ট */
+}
+
+/* light mode */
+.light p{
+    color: #0f172a;
+}
+.light h3{
+    color: #0f172a;
+}
+.light .modal-box{
+    background: #746c6c;
+}
+.light .link-copy-area input{
+    background: #414040;
+    border: none;
+}
+.dots {
+    width: 12px;
+    height: 12px;
+    background-color: #ff5f56; 
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 20px 0 0 0 #ffbd2e,  
+                40px 0 0 0 #27c93f; 
+    
+    margin-right: 50px; 
+}
+</style>
+  </head>
+
+    <body>
+
+        <!--------------- Navbar Start -------------------------->
+    <nav class="navbar">
+
+      <div class="logo">&lt;/&gt;CodeWithSouma</div>
+
+      <div class="nav-links" id="menu">
+        <a href="index.html">Home</a>
+        <a href="course.html">Courses</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="notes.html">Notes</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-right">
+        <div class="search-container" onclick="openSearch()">
+          <input type="text" placeholder="Search courses..." class="search-box" readonly>
+        </div>
+        <div class="mobile-search-icon" onclick="openSearch()">🔍</div>
+        <button id="themeToggle" class="theme-btn">🌙</button>
+        <div class="container">
+          <div class="profile">
+            <a href="profile.html"><img src="me1.jpg"></a>&nbsp;Soumaprit
+          </div>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div id="searchDialog" class="search-overlay">
+        <div class="search-dialog-box">
+          <div class="search-header">
+            <div class="search-input-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="mainSearchInput" placeholder="What do you want to learn?" autocomplete="off">
+            </div>
+            <button class="close-dialog" onclick="closeSearch()">&times;</button>
+          </div>
+
+          <div class="search-body">
+            <div class="search-filters">&nbsp;
+                <button class="filter-pill active" onclick="filterResults('All', this)">All</button>
+                <button class="filter-pill" onclick="filterResults('Course', this)">Courses</button>
+                <button class="filter-pill" onclick="filterResults('Blog', this)">Blog</button>
+                <button class="filter-pill" onclick="filterResults('Notes', this)">Notes</button>
+            </div>
+              <br>
+            <p class="results-info" id="resultsInfo">&nbsp;Showing results</p><br>
+              
+            <div id="searchOutput" class="search-results-list">
+              <p class="empty-msg">Start typing to see magic...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Search -->
+
+
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    </nav>
+        <!-------------------- Navbar End ---------------->
+
+
+    <!-- Main Page Start ------------------------  -->
+    <div class="blogbox">
+      <div class="maincontent">
+        <div class="bannerbox"></div>
+
+          <div class="textdiv">
+            <h1>Build an Email Validartor with HTML, CSS and JavaScript</h1>
+
+            <div class="info-container">
+              <div class="info-text">
+                "Learn how to create a responsive Email Validator using HTML, CSS, and JavaScript. This step-by-step guide walks you through integrating the Email Validation API to validate email addresses effectively. Perfect for beginners and experts alike!"
+              </div>
+            </div>
+
+            <div class="meta-data">
+              <span class="author">By CodeWithSouma</span>
+              <span class="date">Updated: April 2, 2026</span>
+            </div>
+
+            <div class="content-area">
+              <p>In this tutorial, we will create an Email Validator using HTML, CSS, and JavaScript. We will build and use this Email Validation API to validate a given email address. The objective of this blog is to understand how HTML, CSS, and JavaScript can be used along with this <u>Email Validation API</u> to create a useful website.</p>
+              <h2>Project Demo</h2>
+              <p>This is how our final Email validator will look like:</p>
+                <video autoplay loop muted playsinline class="project-video">
+                  <source src="final-app-on-pc.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+              <p>This Email validetor is also responsive and on a mobile phone it look something like this:</p>
+                <video autoplay loop muted playsinline class="project-video-mobile">
+                  <source src="final-app-on-mobile.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video><br>
+              <h2>HTML Structure of our Email Validator</h2>
+              <p>We will use a very basic HTML structure for our email validator. Now, we will start adding a form where we will take the desired information as email input and we will also add a button to submit the information. Now, all that’s left is the output. We will also add the output part as a normal container. <br><br>
+                Here is the HTML code of our email validator without any styling.</p>
+              <br>
+
+              <div class="content-area">
+                  <h2>Complete HTML Structure (index.html)</h2>
+                  <p>Below is the full source code for the Email Validator project. You can copy and use this in your local environment:</p>
+
+                  <div class="code-window">
+                      <div class="code-header">
+                          <div class="dots"></div>
+                          <span class="file-name">index.html</span>
+                          <button class="copy-btn" onclick="copyCode()">Copy</button>
+                      </div>
+                      <div class="code-body">
+                          <pre><code id="codeBlock">
+              &lt;!DOCTYPE html&gt;
+              &lt;html lang="en"&gt;
+              &lt;head&gt;
+                  &lt;meta charset="UTF-8"&gt;
+                  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                  &lt;title&gt;iValidate - Email Validator for your Business&lt;/title&gt;
+                  &lt;link rel="stylesheet" href="css/style.css"&gt;
+              &lt;/head&gt;
+              &lt;body&gt;
+                  &lt;header&gt;
+                      &lt;nav&gt;
+                          &lt;div class="logo"&gt;
+                              &lt;img src="img/email.svg" alt="email svg"&gt;
+                              &lt;span&gt;iValidate&lt;/span&gt;
+                          &lt;/div&gt;
+                          &lt;ul&gt;
+                              &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                              &lt;li&gt;&lt;a href="/"&gt;About&lt;/a&gt;&lt;/li&gt;
+                              &lt;li&gt;&lt;a href="/"&gt;Contact Us&lt;/a&gt;&lt;/li&gt;
+                          &lt;/ul&gt;
+                      &lt;/nav&gt;
+                  &lt;/header&gt;
+                  &lt;main&gt;
+                      &lt;div class="container"&gt;
+                          &lt;h1&gt;Enter your email to validate&lt;/h1&gt;
+                          &lt;form action="/submit" method="post"&gt;
+                              &lt;input placeholder="Enter your email to validate" type="text" id="username" name="username" required&gt;
+                              &lt;br&gt;&lt;br&gt;
+                              &lt;input id="submitBtn" class="btn" type="submit" value="Submit"&gt;
+                          &lt;/form&gt;
+                      &lt;/div&gt;
+                      &lt;div class="container"&gt;
+                          &lt;h2&gt;Your Results&lt;/h2&gt;
+                          &lt;div id="resultCont"&gt;
+                              Your results will show here
+                          &lt;/div&gt;
+                      &lt;/div&gt;
+                  &lt;/main&gt;
+                  &lt;footer&gt;
+                      Copyright | iValidate.com | All Rights reserved
+                  &lt;/footer&gt;
+                  &lt;script src="js/index.js"&gt;&lt;/script&gt;
+              &lt;/body&gt;
+              &lt;/html&gt;
+                          </code></pre>
+                      </div>
+                  </div>
+              </div><br>
+              <p>Note to Readers: You may notice links in the navigation bar like "/about" and "/contact." These pages are placeholders, and you can add these pages to your website if you wish to. <br><br>
+                This is how our website will look like after adding the basic HTML structure:</p><br>
+              <img src="without-css.png" class="photo"><br>
+              <p>I know, this does not look good at all. Let’s add some CSS to beautify the website:</p><br><br>
+              <h2>Adding CSS to our Email Validator Website</h2><br>
+              <p>We will add CSS styles including media queries to make our Email validator website responsive. This will help our mobile users use our email validator. The raw HTML code looks a little ugly. Let's add the below CSS to style our Email validator:</p><br><br>
+              
+              <div class="content-area">
+    <h2>Styling the Page (style.css)</h2>
+    <p>Now, let's add some CSS to make our Email Validator look modern and responsive:</p>
+
+    <div class="code-window">
+        <div class="code-header">
+            <div class="dots">
+                <span class="dotred"></span>
+                <span class="dotyellow"></span>
+                <span class="dotgreen"></span>
+            </div>
+            <span class="file-name">style.css</span>
+            <button class="copy-btn" onclick="copyCSS()">Copy</button>
+        </div>
+        <div class="code-body">
+            <pre><code id="cssCodeBlock">
+              @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,700;1,300&family=Poppins:wght@300;400;500;600&display=swap');
+
+              * {
+                  padding: 0;
+                  margin: 0;
+                  font-family: 'Poppins', sans-serif;
+              }
+
+              nav {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  background-color: black;
+                  color: white;
+                  padding: 19px 12px;
+              }
+
+              ul {
+                  display: flex;
+              }
+
+              ul li {
+                  list-style: none;
+                  padding: 0 13px;
+              }
+
+              ul li a {
+                  color: white;
+                  text-decoration: none;
+              }
+
+              ul > li > a:hover {
+                  color: rgb(192, 189, 205);
+              }
+
+              main {
+                  min-height: 100vh;
+              }
+
+              .logo img {
+                  width: 15px;
+                  filter: invert(1);
+              }
+
+              .container {
+                  max-width: 80vw;
+                  margin: auto;
+                  padding: 9px 15px;
+              }
+
+              .container h1 {
+                  padding: 12px 0;
+              }
+
+              input[type='text'] {
+                  min-width: 23vw;
+                  padding: 3px 12px;
+                  border: 2px solid black;
+                  border-radius: 4px;
+                  font-size: 20px;
+              }
+
+              .btn {
+                  background: black;
+                  color: white;
+                  padding: 9px 12px;
+                  border: 1px solid gray;
+                  border-radius: 6px;
+                  cursor: pointer;
+              }
+
+              #resultCont div::first-letter {
+                  text-transform: uppercase;
+              }
+
+              footer {
+                  font-size: 12px;
+                  background-color: black;
+                  color: white;
+                  display: flex;
+                  padding: 12px;
+                  justify-content: center;
+                  align-items: center;
+              }
+
+              @media only screen and (max-width: 600px) {
+                  .container {
+                      font-size: 12px;
+                  }
+
+                  input[type='text'] {
+                      width: 100%;
+                  }
+
+                  nav {
+                      flex-direction: column;
+                  }
+                  .logo {
+                      padding: 6px 0;
+                      font-size: 12px;
+                  }
+                  .logo span {
+                      font-size: 20px;
+                  }
+                  .logo img {
+                      width: 15px;
+                      filter: invert(1);
+                  }
+              }
+                          </code></pre>
+                      </div>
+                  </div>
+              </div><br>
+              <p>After adding all the relevant styles, this is how our webpage will look:</p><br>
+              <img src="with-css.png" class="photo"><br><br>
+              <p>We are done with the frontend part. Now, we will start coding the logic where we will 
+                use the Email Validation API to gather and validate email addresses.</p>
+              <h2>JavaScript - Adding the Logic</h2><br>
+              <p>We will be using Email Validation API for this application. EmailValidation.io provides 
+                us with a robust email validation API which is the perfect API for our email validation app. 
+                Navigate to <u>this login page</u> and create your account. You can use the free plan as it gives us 
+                1 API Key & 100 free requests per month. If you need it for a large-scale application, you can 
+                purchase a subscription to this API. <br><br>
+              Let’s start by creating a new file called <b>index.js</b> inside the <b>js</b> folder. Now, in <b>index.js</b>, we will use the following code to validate email using the Email Validation API.</p><br>
+
+              <div class="content-area">
+                <h2>Adding Functionality (index.js)</h2>
+                <p>Finally, we use the Fetch API to connect with <strong>emailvalidation.io</strong> and display the results dynamically:</p>
+
+                <div class="code-window">
+                    <div class="code-header">
+                        <div class="dots">
+                            <span class="dotred"></span>
+                            <span class="dotyellow"></span>
+                            <span class="dotgreen"></span>
+                        </div>
+                        <span class="file-name">index.js</span>
+                        <button class="copy-btn" onclick="copyJS()">Copy</button>
+                    </div>
+                    <div class="code-body">
+                        <pre><code id="jsCodeBlock">
+            submitBtn.addEventListener("click", async (e) => {
+                e.preventDefault()
+                console.log("Clicked!")
+                
+                // Show loading spinner
+                resultCont.innerHTML = `&lt;img width="123" src="img/loading.svg" alt=""&gt;`
+                
+                let key = "YOUR-API-KEY"
+                let email = document.getElementById("username").value
+                let url = `https://api.emailvalidation.io/v1/info?apikey=${key}&email=${email}`
+                
+                let res = await fetch(url)
+                let result = await res.json()
+                
+                let str = ``
+                for (key of Object.keys(result)) {
+                    if(result[key] !== "" && result[key] !== " "){
+                        str = str + `&lt;div&gt;${key}: ${result[key]}&lt;/div&gt;`
+                    }
+                }
+                
+                console.log(str)
+                resultCont.innerHTML = str
+            })
+                        </code></pre>
+                    </div>
+                </div>
+            </div>
+            <h2>Explanation</h2><br>
+            <p>Let’s understand the code. In this code, we have added an event listener in the <b>submitBtn</b>, which prevents the
+              default action of the button, which is to submit the form. This is done by calling the <b>preventDefault()</b> method. Then,
+              the code logs a message to the console indicating that the button has been clicked. This is just for debugging
+              purposes. Then, the code clears the contents of the <b>resultCont</b> element. This element will be used to display the
+              results of the validation. Then, the code fetches the API <b>key</b> from the key variable. The API key is used to
+              authenticate the request to the Email Validation API. <br><br>
+              Make sure to change this line to your own API key. You can get your own API Key by logging in to your <u>EmailValidation.io</u> account.
+            </p>
+            <div class="code-window">
+                    <div class="code-header">
+                        <div class="dots">
+                            <span class="dotred"></span>
+                            <span class="dotyellow"></span>
+                            <span class="dotgreen"></span>
+                        </div>
+                        <span class="file-name">index.js</span>
+                        <button class="copy-btn" onclick="copyJS()">Copy</button>
+                    </div>
+                    <div class="code-body">
+                        <pre><code id="js2CodeBlock">
+                          let key = "YOUR-API-KEY"
+                        </code></pre>
+                    </div>
+                </div>
+            <p >Now, the code gets the email address (the email address that will be validated) from the <b>username</b> input element.
+               Next, the code constructs a URL for the Email Validation API. The URL includes the API key and the email address 
+               that will be validated. Then, the code makes a request to the Email Validation API. The <b>await keyword</b> is used to 
+               ensure that the API request is completed before the rest of the code is executed. Finally, the code parses the 
+               response from the API as JSON. The JSON response contains the results of the validation. The code then loops over 
+               the properties of the <b>result</b> object. For each property, the code checks if the value is not empty or a space. If the 
+               value is not empty or a space, the code adds a new <b>&lt;div&gt;</b> element to the <b>str</b> string with the property name and 
+                value. Finally, the code logs the <b>str</b> string to the console and sets the contents of the <b>resultCont</b> element to 
+                the <b>str string</b>. <br><br>
+              Now our application is finished and this is how it will look:</p><br><br>
+              <video autoplay loop muted playsinline class="project-video">
+                  <source src="final-app-on-pc (1).mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video><br>
+            <h2>Conclusion and GitHub Link</h2><br>
+            <p>So this is how you can create an email validator using HTML, CSS, JavaScript and <u><b>Email Validation API</b></u>. For your 
+              convenience, I have added this code to <u><b>GitHub</b></u>. Feel free to fork it and make the necessary changes. Pull requests 
+              are welcome! <br><br>
+              I hope you liked this email validator we created using HTML, CSS, and JavaScript. Check out this Currency 
+              Converter Project where we created a <u><b>Currency converter using HTML, CSS and JavaScript</b></u>. Hope you have learnt 
+              something new. Happy Coding!</p><br><br>
+              <div class="meta-data">
+              <span class="tags"><h2>Tags</h2><br>
+              <span class="tag">email</span>
+              <span class="tag">validator</span>
+              <span class="tag">using</span>
+              <span class="tag">html</span>
+              <span class="tag">css</span>
+              <span class="tag">js</span>
+              </span>
+              <span class="date">
+                <button class="share" onclick="openShareModal()">🔗 Share </button>
+              </span>
+              </div>
+              <div id="shareModal" class="modal-overlay">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>Share with Friends</h3>
+            <span class="close-modal" onclick="closeShareModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p>Copy the link to share this blog:</p>
+            <div class="link-copy-area">
+                <input type="text" id="shareLink" value="https://soumaprit10.github.io/SoumapritPaul/blog.html" readonly>
+                <button onclick="copyShareLink()">Copy</button>
+            </div>
+            <div class="social-share-grid">
+        <a href="#" class="social-item whatsapp" onclick="shareToWhatsApp()">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WA">
+            <span>WhatsApp</span>
+        </a>
+        <a href="#" class="social-item facebook" onclick="shareToFacebook()">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="FB">
+            <span>Facebook</span>
+        </a>
+        <a href="#" class="social-item twitter" onclick="shareToTwitter()">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="X">
+            <span>Twitter (X)</span>
+        </a>
+        <a href="#" class="social-item instagram" onclick="shareToInstagram()">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="IG">
+            <span>Instagram</span>
+        </a>
+    </div>
+        </div>
+    </div>
+</div>
+
+              </div>
+            </div>
+      
+
+          </div>
+        </div>
+      </div>
+      
+    <!-- Main Page End ------------------------  -->
+
+
+
+        <!--------------- Footer Start -------------------------->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Main</h3>
+          <a href="index.html">Home</a>
+          <a href="contact.html">Contact</a>
+          <a href="gear.html">My Gear</a>
+          <a href="profile.html">Creater Details</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Learn</h3>
+          <a href="course.html">Courses</a>
+          <a href="tutorials.html">Tutorials</a>
+          <a href="notes.html">Notes</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Social</h3>
+          <a href="https://www.youtube.com/@CodeWithSouma" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" class="ficon">
+            &nbsp;YouTube
+          </a>
+          <a href="https://www.facebook.com/share/1A1caHFjbc" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="ficon">
+            &nbsp;Facebook
+          </a>
+          <a href="https://www.instagram.com/computerworldai" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" class="ficon">
+            &nbsp;Instagram
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Made in Indian ❤️ Made by Soumaprit paul
+      </div>
+    </footer>
+    
+    <script src="blog.js"></script>
+    <script>
+      function copyCode() {
+    const code = document.getElementById('codeBlock').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerText = "Copied!";
+        setTimeout(() => btn.innerText = "Copy", 2000);
+    });
+}
+
+function copyCSS() {
+    const code = document.getElementById('cssCodeBlock').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        const btn = document.querySelectorAll('.copy-btn')[1]; // দ্বিতীয় কপি বাটন
+        btn.innerText = "Copied!";
+        setTimeout(() => btn.innerText = "Copy", 2000);
+    });
+}
+
+function copyJS() {
+    const code = document.getElementById('jsCodeBlock').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        const btn = document.querySelectorAll('.copy-btn')[2]; // তৃতীয় কপি বাটন
+        btn.innerText = "Copied!";
+        setTimeout(() => btn.innerText = "Copy", 2000);
+    });
+}
+
+function copyJS() {
+    const code = document.getElementById('js2CodeBlock').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        const btn = document.querySelectorAll('.copy-btn')[3]; // তৃতীয় কপি বাটন
+        btn.innerText = "Copied!";
+        setTimeout(() => btn.innerText = "Copy", 2000);
+    });
+}
+
+// Share link
+function openShareModal() {
+    document.getElementById("shareModal").style.display = "flex";
+}
+
+function closeShareModal() {
+    document.getElementById("shareModal").style.display = "none";
+}
+
+function copyShareLink() {
+    const linkInput = document.getElementById("shareLink");
+    linkInput.select();
+    document.execCommand("copy"); // পুরোনো ব্রাউজারের জন্য
+    // আধুনিক পদ্ধতি: navigator.clipboard.writeText(linkInput.value);
+    
+    alert("Link copied to clipboard!");
+}
+
+// বক্সের বাইরে ক্লিক করলে বন্ধ হয়ে যাবে
+window.onclick = function(event) {
+    const modal = document.getElementById("shareModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+const blogUrl = window.location.href; // বর্তমানে যে পেজে আছেন তার লিঙ্ক নেবে
+const blogTitle = "Build an Email Validator with HTML, CSS and JS - CodeWithSouma";
+
+function shareToWhatsApp() {
+    const url = `https://wa.me/?text=${encodeURIComponent(blogTitle + " " + blogUrl)}`;
+    window.open(url, '_blank');
+}
+
+function shareToFacebook() {
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogUrl)}`;
+    window.open(url, '_blank');
+}
+
+function shareToTwitter() {
+    const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(blogUrl)}&text=${encodeURIComponent(blogTitle)}`;
+    window.open(url, '_blank');
+}
+function shareToInstagram() {
+    
+    const blogUrl = window.location.href; // বর্তমানে যে পেজে আছেন তার লিঙ্ক নেবে
+    
+    // শুধু ইন্সটাগ্রাম ওপেন করবে
+    const url = `https://www.instagram.com/`;
+    window.open(url, '_blank');
+}
+
+// প্রো-টিপ: মোবাইলে যদি আসল শেয়ার মেনু খুলতে চান
+async function nativeShare() {
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: blogTitle,
+                text: 'Check out this awesome tutorial!',
+                url: blogUrl,
+            });
+        } catch (err) {
+            console.log("Share failed:", err);
+        }
+    } else {
+        openShareModal(); // পিসি-র জন্য কাস্টম মডাল খুলবে
+    }
+}
+    </script>
+    </body>
+</html>
