@@ -1,0 +1,208 @@
+.handbook h1{
+text-align:center;
+margin-bottom:40px;
+font-size:36px;
+}
+
+.handbook{
+padding-top:80px;
+}
+
+.light .handbook{
+    background: #9ca3af;
+}
+
+/* GRID */
+.handbooks{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+/* CARD */
+.card{
+background:#051733;
+border:1px solid rgba(255,255,255,0.08);
+padding:40px 25px;
+border-radius:14px;
+text-align:center;
+transition:.3s;
+width:100%;
+}
+
+.light .card {
+    background: #1c6778;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:#ffffff;
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 255, 255, 0.9)
+}
+
+.light .card:hover{
+transform:translateY(-8px);
+border-color:#0099ff;
+box-shadow: 0 5px 10px rgba(2, 64, 83, 0.3),
+    0 0 20px rgba(0, 0, 0, 0.9)
+}
+
+/* ICON */
+.icon{
+width: 110px;
+height: 110px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:0 auto 20px;
+background:#2563eb;
+}
+
+.icon img{
+width:65px;
+height: 65px;
+}
+
+/* TITLE */
+.card h3{
+margin-bottom:10px;
+}
+
+/* TEXT */
+.card p{
+color:#9ca3af;
+font-size:14px;
+margin-bottom:20px;
+}
+
+/* BUTTON */
+.btn{
+width:100%;
+padding: 12px 18px;
+border: 2px solid #2563eb;
+border-radius:6px;
+background:#1e293b;
+color:white;
+cursor:pointer;
+font-weight:bold;
+transition: ease-out 0.5s;
+box-shadow: inset 0 0 0 0 #2563eb;
+left: 250px;
+top: 100px;
+}
+
+.btn:hover{
+    color: white;
+    box-shadow: inset 0 -100px 0 0 #2563eb;
+}
+
+.light .btn{
+width:100%;
+padding: 12px 18px;
+border: 2px solid #25ebeb;
+border-radius:6px;
+background:#1e293b;
+color:white;
+cursor:pointer;
+font-weight:bold;
+transition: ease-out 0.5s;
+box-shadow: inset 0 0 0 0 #25ebeb;
+left: 250px;
+top: 100px;
+}
+
+.light .btn:hover{
+    color: black;
+    box-shadow: inset 0 -100px 0 0 #25ebeb;
+}
+
+/* TABLET */
+@media(max-width:1000px){
+.handbooks{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+.handbooks{
+grid-template-columns:1fr;
+}
+}
+
+
+/* ১. মেইন ওভারলে - যা বক্সটিকে মাঝখানে রাখবে */
+.search-overlay {
+    display: none; /* জাভাস্ক্রিপ্ট দিয়ে flex করা হবে */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    
+    /* নিচের তিনটি লাইন বক্সটিকে স্ক্রিনের একদম মাঝখানে রাখবে */
+    align-items: center;
+    justify-content: center;
+}
+
+/* ২. পেমেন্ট বক্স - সাইজ ছোট এবং মাঝখানে */
+.payment-box {
+    background: #121212;
+    width: 90%;
+    max-width: 360px; /* সাইজ আরও একটু ছোট করা হলো */
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    position: relative; /* ক্লোজ বাটনকে এর ভেতরে রাখার জন্য */
+    border: 1px solid #333;
+    color: white;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    animation: zoomIn 0.3s ease-out;
+}
+
+/* ৩. ক্লোজ বাটন - একদম স্পষ্ট দেখাবে */
+.payment-box .close-dialog {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: #222; /* হালকা ব্যাকগ্রাউন্ড যাতে চোখে পড়ে */
+    border: none;
+    color: #ff4d4d; /* লাল রঙ যাতে সহজে বোঝা যায় */
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+    z-index: 10001; /* সবার উপরে থাকবে */
+}
+
+.payment-box .close-dialog:hover {
+    background: #444;
+    color: white;
+}
+
+/* ৪. এনিমেশন */
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ৫. বাকি এলিমেন্ট ছোট রাখা */
+.heart-icon { font-size: 32px; margin-bottom: 5px; }
+.payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
+.payment-grid button { padding: 8px; font-size: 13px; border-radius: 8px; cursor: pointer; border:none; color:#fff; background: #6e48aa; }
+.skip-link { font-size: 11px; color: #777; margin-top: 15px; display: block; }
