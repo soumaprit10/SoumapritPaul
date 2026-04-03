@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="me1.jpg">
+    <title>Blog || Algorithmic Trading Systems</title>
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="Index-Style.css">
+    <link rel="stylesheet" href="blog.css">
+
+    <style>
+      *{
+        font-family: 'Noto Sans', sans-serif;
+        font-family: 'Poppins', sans-serif;
+      }
+  .blogbox {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0; /* উপরে নিচে একটু গ্যাপ থাকবে */
+  }
+
+  .maincontent { /* একদম কুচকুচে কালো না দিয়ে একটু গ্রে-ব্ল্যাক দিলে ভালো লাগবে */
+    width: 70%;
+    border-radius: 15px; /* কোণাগুলো গোল করার জন্য */
+    overflow: hidden;
+  }
+
+  .bannerbox {
+    width: 100%;
+    height: 400px; /* এখানে height: 100% এর বদলে একটি নির্দিষ্ট উচ্চতা দিন */
+    background-image: url(blog4.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .textdiv {
+    color: white;
+    text-align: center;
+    padding: 30px;
+  }
+
+  /* মোবাইল ফ্রেন্ডলি করার জন্য */
+  @media (max-width: 768px) {
+    .maincontent {
+      width: 95%; /* মোবাইলে বক্সটি বড় দেখাবে */
+    }
+    .bannerbox {
+      height: 250px; /* মোবাইলে ফটোর উচ্চতা একটু কমবে */
+    }
+  }
+
+  .info-container {
+    display: flex;
+    justify-content: center; /* মাঝখানে রাখার জন্য */
+    margin-top: 20px;
+}
+
+.info-text {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    color: #7b7d7f;
+    max-width: 900px; /* লেখাটি যেন খুব বেশি ছড়িয়ে না যায় */
+    text-align: left; /* ডান পাশের দাগের সাথে লেখাটি মানানসই করতে */
+    
+    /* ডান পাশে লম্বা দাগ তৈরির ম্যাজিক */
+    border-left: 4px solid #38bdf8; 
+    
+    /* দাগ এবং লেখার মাঝে একটু গ্যাপ দেওয়ার জন্য */
+    line-height: 1.5;
+}
+
+/* মোবাইলের জন্য ছোট অ্যাডজাস্টমেন্ট */
+@media (max-width: 600px) {
+    .info-text {
+        font-size: 0.95rem;
+        border-right-width: 3px;
+        padding-right: 15px;
+    }
+}
+
+.meta-data {
+    display: flex;
+    justify-content: space-between; /* একটি বামে এবং একটি ডানে পাঠাবে */
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #334155; /* হালকা একটি দাগ উপরে দিলে দেখতে ভালো লাগবে */
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.author {
+    font-weight: bold;
+    color: #38bdf8; /* আপনার ব্র্যান্ড কালার */
+}
+.tag{
+  background: #555;
+  padding: 5px;
+  border-radius: 50px;
+  color: #fff;
+}
+
+.date {
+    font-style: italic;
+}
+
+/* মোবাইল রেসপন্সিভ (ছোট স্ক্রিনে নিচে নিচে আসবে) */
+@media (max-width: 480px) {
+    .meta-data {
+        flex-direction: column; /* মোবাইলে উপরে-নিচে দেখাবে */
+        gap: 8px;
+        text-align: center;
+    }
+}
+.content-area {
+    margin-top: 30px;
+    text-align: left; /* পড়ার সুবিধার জন্য বাম দিক থেকে শুরু */
+    line-height: 1.8; /* লাইনের মাঝে গ্যাপ থাকলে পড়তে আরাম লাগে */
+    color: #e2e8f0;
+}
+.content-area p {
+    margin-bottom: 20px; /* প্রতিটি প্যারাগ্রাফের মাঝে গ্যাপ */
+    font-size: 1.1rem;
+}
+@media (max-width: 600px) {
+    .content-area p {
+        font-size: 1rem;
+    }
+}
+.content-area h2 {
+    margin: 30px 0 15px;
+    color: #38bdf8;
+    border-bottom: 2px solid #334155;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.project-video {
+    width: 550px; /* ভিডিওটি বক্সের সমান চওড়া হবে */
+    display: block;
+    height: auto;
+}
+.project-video-mobile{
+  width: 150px;
+}
+/* মোবাইলে ভিডিওর ওপর-নিচে গ্যাপ কিছুটা কমানোর জন্য */
+@media (max-width: 600px) {
+    .video-container {
+        margin: 20px 0;
+    }
+}
+
+/* HTML File view */
+.copy-btn {
+    background: #444;
+    color: #fff;
+    border: none;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.copy-btn:hover {
+    background: #38bdf8;
+}
+
+.code-header{
+    background: #2d2d2d;
+    border-radius: 10px 10px 0 0;
+}
+.code-body {
+    max-height: 500px; 
+    overflow-y: auto;
+    background: #444;
+}
+
+/* scrollbar mordern look */
+/* ১. পুরো স্ক্রলবারটির উইডথ সেট করা */
+.code-body::-webkit-scrollbar {
+    width: 5px;        /* ভার্টিক্যাল স্ক্রলবারের চওড়া */
+    height: 5px;       /* হরাইজন্টাল স্ক্রলবারের উচ্চতা */
+}
+
+/* ২. স্ক্রলবারের পেছনের অংশ (Track) */
+.code-body::-webkit-scrollbar-track {
+    background: #1e1e1e; /* কোড বক্সের ব্যাকগ্রাউন্ডের সাথে মিলিয়ে */
+    border-radius: 0 0 8px 0;
+}
+
+/* ৩. স্ক্রলবারের যে অংশটি টেনে সরানো হয় (Thumb) */
+.code-body::-webkit-scrollbar-thumb {
+    background: #00eaff;    /* স্ক্রলবারের রঙ */
+    border-radius: 10px;
+    border: 1px solid #1e1e1e; /* থাম্বের চারপাশে একটু ফাঁকা দেখানোর জন্য */
+}
+
+/* ৪. থাম্বের ওপর মাউস নিলে রঙ পরিবর্তন (Hover) */
+.code-body::-webkit-scrollbar-thumb:hover {
+    background: #555;    /* হোভার করলে একটু হালকা হবে */
+}
+
+/* ৫. কর্নার (যেখানে দুই দিকের স্ক্রলবার মেশে) */
+.code-body::-webkit-scrollbar-corner {
+    background: #1e1e1e;
+}
+.photo{
+  width: 100%;
+}
+@media (max-width: 600px) {
+    .photo{
+      width: 350px;
+    }
+}
+
+.share{
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background: #1877F2;
+}
+
+/* share link */
+/* Share Button Style */
+.share-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.share-btn {
+    background: linear-gradient(135deg, #38bdf8, #2563eb);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+}
+
+.share-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(56, 189, 248, 0.6);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    display: none; /* শুরুতে লুকানো থাকবে */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Box */
+.modal-box {
+    background: #1e293b;
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #334155;
+    color: white;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 10px;
+}
+
+.close-modal {
+    font-size: 28px;
+    cursor: pointer;
+    color: #94a3b8;
+}
+
+.link-copy-area {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.link-copy-area input {
+    flex: 1;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #38bdf8;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.link-copy-area button {
+    background: #38bdf8;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.social-share-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #cbd5e1;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.social-item img {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 8px;
+    filter: invert(1); /* সাদা দেখানোর জন্য, যদি ব্যাকগ্রাউন্ড ডার্ক হয় */
+    padding: 8px;
+    background: #746c6c;
+    border-radius: 50%;
+}
+
+.social-item:hover {
+    color: #38bdf8;
+    transform: translateY(-3px);
+}
+
+.social-item.whatsapp:hover img { background: #25D366; filter: invert(0); }
+.social-item.facebook:hover img { background: #1877F2; filter: invert(0); }
+.social-item.twitter:hover img { background: #ffffff; filter: invert(0); }
+.social-item.instagram:hover img {
+    /* ইন্সটাগ্রামের লোগোর রঙের মিশ্রণ */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    filter: invert(0); /* কালারফুল গ্রাডিয়েন্টে আইকনটি সাদা না দেখিয়ে কালো বা গ্রে দেখাবে */
+    box-shadow: 0 4px 15px rgba(214, 36, 159, 0.5); /* একটু গ্লো এফেক্ট */
+}
+
+/* light mode */
+.light p{
+    color: #0f172a;
+}
+.light h3{
+    color: #0f172a;
+}
+.light ul, .light ol{
+    color: #0f172a;
+}
+.light .modal-box{
+    background: #746c6c;
+}
+.light .link-copy-area input{
+    background: #414040;
+    border: none;
+}
+.dots {
+    width: 12px;
+    height: 12px;
+    background-color: #ff5f56; 
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 20px 0 0 0 #ffbd2e,  
+                40px 0 0 0 #27c93f; 
+    
+    margin-right: 50px; 
+}
+</style>
+  </head>
+
+    <body>
+
+        <!--------------- Navbar Start -------------------------->
+    <nav class="navbar">
+
+      <div class="logo">&lt;/&gt;CodeWithSouma</div>
+
+      <div class="nav-links" id="menu">
+        <a href="index.html">Home</a>
+        <a href="course.html">Courses</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="notes.html">Notes</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-right">
+        <div class="search-container" onclick="openSearch()">
+          <input type="text" placeholder="Search courses..." class="search-box" readonly>
+        </div>
+        <div class="mobile-search-icon" onclick="openSearch()">🔍</div>
+        <button id="themeToggle" class="theme-btn">🌙</button>
+        <div class="container">
+          <div class="profile">
+            <a href="profile.html"><img src="me1.jpg"></a>&nbsp;Soumaprit
+          </div>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div id="searchDialog" class="search-overlay">
+        <div class="search-dialog-box">
+          <div class="search-header">
+            <div class="search-input-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="mainSearchInput" placeholder="What do you want to learn?" autocomplete="off">
+            </div>
+            <button class="close-dialog" onclick="closeSearch()">&times;</button>
+          </div>
+
+          <div class="search-body">
+            <div class="search-filters">&nbsp;
+                <button class="filter-pill active" onclick="filterResults('All', this)">All</button>
+                <button class="filter-pill" onclick="filterResults('Course', this)">Courses</button>
+                <button class="filter-pill" onclick="filterResults('Blog', this)">Blog</button>
+                <button class="filter-pill" onclick="filterResults('Notes', this)">Notes</button>
+            </div>
+              <br>
+            <p class="results-info" id="resultsInfo">&nbsp;Showing results</p><br>
+              
+            <div id="searchOutput" class="search-results-list">
+              <p class="empty-msg">Start typing to see magic...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Search -->
+
+
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    </nav>
+        <!-------------------- Navbar End ---------------->
+
+
+    <!-- Main Page Start ------------------------  -->
+    <div class="blogbox">
+      <div class="maincontent">
+        <div class="bannerbox"></div>
+
+          <div class="textdiv">
+            <h1>How Algorithmic Trading Systems Work</h1>
+
+            <div class="info-container">
+              <div class="info-text">
+                "In India, the popularity of online trading has helped transform the financial landscape. This has led to over 20% of all trading is now done via mobile through trading apps. In line with this, another development many traders have highlighted is the use of algorithmic trading systems to take advantage of ever-changing market opportunities. To date, algorithmic trading systems are used in up to 60% of all trading volume."
+              </div>
+            </div>
+
+            <div class="meta-data">
+              <span class="author">By CodeWithSouma</span>
+              <span class="date">Updated: April 2, 2026</span>
+            </div>
+
+            <div class="content-area">
+                <img src="back12365.jpg" class="photo"><br>
+                <p>In India, the popularity of online trading has helped <b>transform the financial landscape</b>. This has led to over 20% of all trading now being done via mobile through trading apps. In line with this, another development many traders have highlighted is the use of algorithmic trading systems to take advantage of ever-changing market opportunities. To date, algorithmic trading systems are used in up to 60% of all trading volume. <br><br>
+                <h2>What are algorithmic trading systems?</h2><br>
+                <p>Algorithmic trading systems, or algo-trading for short, refer to the use of computer programs to automatically execute trades in financial markets. These trades are based on predetermined rules set by the trader. With a single program, traders are able to process large amounts of data and make trades at high speeds, which helps them take advantage of online trading opportunities. These programs are also able to react in a more timely manner and reduce any risks associated with sudden volatile dips before significant losses are incurred. <br><br>
+                <h2>How do algorithmic trading systems work?</h2><br>
+                <p>Essentially, algo-trading uses mathematical models and statistical analysis to execute trades in financial markets. A computer program is responsible for an automated trading approach that is able to process market data and make trades without constant human supervision. Apart from profit opportunities for the trader, the algorithm also makes trading more systematic by ruling out the impact of human errors on trading activities. <br><br>
+                To ensure success, it is critical to use the right programming language. Different programming languages have their own strengths and weaknesses, and the wrong choice can slow down the analytical process and lower profitability. Furthermore, the varying data structures within different financial markets may require the use of a specific programming language for optimal performance. <br><br>
+                Currently, the common programming languages used in algo-trading include Python, Java, C++, and R. As explained in our <u>program cheatsheet</u>, Python is popular for its versatility. In algo trading, this versatile nature means that traders can experiment with different strategies first without needing to commit to more complex codes. Additionally, it has a more understandable syntax that ensures accessibility across most trader levels. However, R is a popular choice for traders who are focused on maximizing statistical analysis and data visualization. Regardless of the programming language used, it is important to use the one that will simplify development and reduce complexity for trading. <br><br>
+                <h2>Application of algorithmic trading systems</h2><br><br>
+                <p>Given the capabilities of algo-trading, applying its use is fairly easy. There are several exchanges and brokers in India that offer algo-trading platforms and services. At present, this includes the National Stock Exchange of India (NSE) and the Bombay Stock Exchange (BSE). <br><br>
+                In terms of specific assets, several can benefit from algo-trading. <u>Indices Trading</u> decisions can be made with more nuance given algo trading's real-time reactions. Since the indices market allows for speculation on the performance of an index rather than investing in it, traders can program their algorithm to capitalize on the movements of prices without getting distracted by the actual stock's standing. This is important for traders, as an algorithm can rapidly analyze data and prices across the thousands of global indices across large and small companies. <br><br>
+                The massive interest in <u>cryptocurrencies</u> within India is also an area where algo trading can thrive. Creating the right algorithm with crypto in mind ensures that trades are executed consistently within a predefined strategy to prevent losses with volatile digital assets. This is also timely given the planned digital currency from the BRICS bloc, as India can take advantage of algo trading to keep up with changes dependent on all of the concerned countries. <br><br>
+                As it stands, the application of algo trading has created a digitally driven community where the future remains bright for Indian traders. After all, India has a robust population of software developers, where 5.8 million individuals work to provide top-notch programs. As such, traders are looking forward to even more innovations that can enhance the investment industry.</p><br><br>
+                
+            
+
+
+
+              <div class="meta-data">
+              <span class="tags"><h2>Tags</h2><br>
+              <span class="tag">how</span>
+              <span class="tag">algorithmic</span>
+              <span class="tag">tranding</span>
+              <span class="tag">systems</span>
+              <span class="tag">work</span>
+              </span>
+              <span class="date">
+                <button class="share" onclick="openShareModal()">🔗 Share </button>
+              </span>
+              </div>
+              <div id="shareModal" class="modal-overlay">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>Share with Friends</h3>
+            <span class="close-modal" onclick="closeShareModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <p>Copy the link to share this blog:</p>
+            <div class="link-copy-area">
+                <input type="text" id="shareLink" value="https://soumaprit10.github.io/SoumapritPaul/blog.html" readonly>
+                <button onclick="copyShareLink()">Copy</button>
+            </div>
+            <div class="social-share-grid">
+        <a href="#" class="social-item whatsapp" onclick="shareToWhatsApp()">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WA">
+            <span>WhatsApp</span>
+        </a>
+        <a href="#" class="social-item facebook" onclick="shareToFacebook()">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="FB">
+            <span>Facebook</span>
+        </a>
+        <a href="#" class="social-item twitter" onclick="shareToTwitter()">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="X">
+            <span>Twitter (X)</span>
+        </a>
+        <a href="#" class="social-item instagram" onclick="shareToInstagram()">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="IG">
+            <span>Instagram</span>
+        </a>
+    </div>
+        </div>
+    </div>
+</div>
+
+              </div>
+            </div>
+      
+
+          </div>
+        </div>
+      </div>
+      
+    <!-- Main Page End ------------------------  -->
+
+
+
+        <!--------------- Footer Start -------------------------->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Main</h3>
+          <a href="index.html">Home</a>
+          <a href="contact.html">Contact</a>
+          <a href="gear.html">My Gear</a>
+          <a href="profile.html">Creater Details</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Learn</h3>
+          <a href="course.html">Courses</a>
+          <a href="tutorials.html">Tutorials</a>
+          <a href="notes.html">Notes</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Social</h3>
+          <a href="https://www.youtube.com/@CodeWithSouma" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" class="ficon">
+            &nbsp;YouTube
+          </a>
+          <a href="https://www.facebook.com/share/1A1caHFjbc" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="ficon">
+            &nbsp;Facebook
+          </a>
+          <a href="https://www.instagram.com/computerworldai" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" class="ficon">
+            &nbsp;Instagram
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Made in Indian ❤️ Made by Soumaprit paul
+      </div>
+    </footer>
+    
+    <script src="blog.js"></script>
+    <script>
+      function copyCode() {
+    const code = document.getElementById('codeBlock').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerText = "Copied!";
+        setTimeout(() => btn.innerText = "Copy", 2000);
+    });
+}
+      function copyCode() {
+    const code = document.getElementById('codeBlock2').innerText;
+    navigator.clipboard.writeText(code).then(() => {
+        const btn = document.querySelector('.copy-btn')[1];
+        btn.innerText = "Copied!";
+        setTimeout(() => btn.innerText = "Copy", 2000);
+    });
+}
+
+
+
+// Share link
+function openShareModal() {
+    document.getElementById("shareModal").style.display = "flex";
+}
+
+function closeShareModal() {
+    document.getElementById("shareModal").style.display = "none";
+}
+
+function copyShareLink() {
+    const linkInput = document.getElementById("shareLink");
+    linkInput.select();
+    document.execCommand("copy"); // পুরোনো ব্রাউজারের জন্য
+    // আধুনিক পদ্ধতি: navigator.clipboard.writeText(linkInput.value);
+    
+    alert("Link copied to clipboard!");
+}
+
+// বক্সের বাইরে ক্লিক করলে বন্ধ হয়ে যাবে
+window.onclick = function(event) {
+    const modal = document.getElementById("shareModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+const blogUrl = window.location.href; // বর্তমানে যে পেজে আছেন তার লিঙ্ক নেবে
+const blogTitle = "Build an Email Validator with HTML, CSS and JS - CodeWithSouma";
+
+function shareToWhatsApp() {
+    const url = `https://wa.me/?text=${encodeURIComponent(blogTitle + " " + blogUrl)}`;
+    window.open(url, '_blank');
+}
+
+function shareToFacebook() {
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(blogUrl)}`;
+    window.open(url, '_blank');
+}
+
+function shareToTwitter() {
+    const url = `https://twitter.com/intent/tweet?url=${encodeURIComponent(blogUrl)}&text=${encodeURIComponent(blogTitle)}`;
+    window.open(url, '_blank');
+}
+function shareToInstagram() {
+    
+    const blogUrl = window.location.href; // বর্তমানে যে পেজে আছেন তার লিঙ্ক নেবে
+    
+    // শুধু ইন্সটাগ্রাম ওপেন করবে
+    const url = `https://www.instagram.com/`;
+    window.open(url, '_blank');
+}
+
+// প্রো-টিপ: মোবাইলে যদি আসল শেয়ার মেনু খুলতে চান
+async function nativeShare() {
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: blogTitle,
+                text: 'Check out this awesome tutorial!',
+                url: blogUrl,
+            });
+        } catch (err) {
+            console.log("Share failed:", err);
+        }
+    } else {
+        openShareModal(); // পিসি-র জন্য কাস্টম মডাল খুলবে
+    }
+}
+    </script>
+    </body>
+</html>
