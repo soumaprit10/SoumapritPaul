@@ -105,10 +105,16 @@ textarea{
 
   .left img{
     height: 300px;
-    object-fit:cover;
+    object-fit: cover;
   }
 
   .sendbtn{
     width: 330px;
   }
 } 
+@media(max-width:600px){
+  .left img{
+    height: 300px;
+    object-fit: cover;
+  }
+}
