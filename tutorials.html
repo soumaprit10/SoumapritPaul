@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="me1.jpg">
+    <title>Tutorials</title>
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="Index-Style.css">
+    <link rel="stylesheet" href="tutorial.css">
+
+  </head>
+
+  <body>
+
+
+    <!--------------- Navbar Start -------------------------->
+    <nav class="navbar">
+
+      <div class="logo">&lt;/&gt;CodeWithSouma</div>
+
+      <div class="nav-links" id="menu">
+        <a href="Index.html">Home</a>
+        <a href="course.html">Courses</a>
+        <a href="tutorials.html" class="active">Tutorials</a>
+        <a href="blog.html">Blog</a>
+        <a href="notes.html">Notes</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-right">
+        <div class="search-container" onclick="openSearch()">
+          <input type="text" placeholder="Search courses..." class="search-box" readonly>
+        </div>
+        <div class="mobile-search-icon" onclick="openSearch()">🔍</div>
+        <button id="themeToggle" class="theme-btn">🌙</button>
+        <div class="container">
+          <div class="profile">
+            <a href="profile.html"><img src="me1.jpg"></a>&nbsp;Soumaprit
+          </div>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div id="searchDialog" class="search-overlay">
+        <div class="search-dialog-box">
+          <div class="search-header">
+            <div class="search-input-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="mainSearchInput" placeholder="What do you want to learn?" autocomplete="off">
+            </div>
+            <button class="close-dialog" onclick="closeSearch()">&times;</button>
+          </div>
+
+          <div class="search-body">
+            <div class="search-filters">&nbsp;
+                <button class="filter-pill active" onclick="filterResults('All', this)">All</button>
+                <button class="filter-pill" onclick="filterResults('Course', this)">Courses</button>
+                <button class="filter-pill" onclick="filterResults('Blog', this)">Blog</button>
+                <button class="filter-pill" onclick="filterResults('Notes', this)">Notes</button>
+            </div>
+              <br>
+            <p class="results-info" id="resultsInfo">&nbsp;Showing results</p><br>
+              
+            <div id="searchOutput" class="search-results-list">
+              <p class="empty-msg">Start typing to see magic...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Search -->
+
+
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    </nav>
+    <!-------------------- Navbar End ----------------------->
+
+
+    <!------------------- Tutorials Start ------------------->
+    <div class="tutorialsmain">
+      <br><br>
+      <h1>Tutorials</h1>
+      <div class="tutorials" id="tutorials"></div>
+      <br><br>
+
+    </div>
+    <!------------------- Tutorials End ------------------->
+
+
+    <!-------------------- FOOTER Start ------------------->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Main</h3>
+          <a href="Index.html">Home</a>
+          <a href="contact.html">Contact</a>
+          <a href="gear.html">My Gear</a>
+          <a href="profile.html">Creater Details</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Learn</h3>
+          <a href="course.html">Courses</a>
+          <a href="tutorials.html">Tutorials</a>
+          <a href="notes.html">Notes</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Social</h3>
+          <a href="https://www.youtube.com/@CodeWithSouma" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" class="ficon">
+            &nbsp;YouTube</a>
+          <a href="https://www.facebook.com/share/1A1caHFjbc" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="ficon">
+            &nbsp;Facebook</a>
+          <a href="https://www.instagram.com/computerworldai" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" class="ficon">
+            &nbsp;Instagram</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Made in Indian ❤️ Made by Soumaprit paul
+      </div>
+    </footer>
+    <!------------------- Footer End ------------------->
+
+
+  <script src="tutorial.js"></script>
+
+  </body>
+</html>
