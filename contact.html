@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="me1.jpg">
+    <title>Contact</title>
+
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="Index-Style.css">
+    <link rel="stylesheet" href="contact.css">
+  </head>
+  <body>
+
+    <!--------------- Navbar Start -------------------------->
+    <nav class="navbar">
+
+      <div class="logo">&lt;/&gt;CodeWithSouma</div>
+
+      <div class="nav-links" id="menu">
+        <a href="Index.html" >Home</a>
+        <a href="course.html">Courses</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="blog.html">Blog</a>
+        <a href="notes.html">Notes</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+
+      <div class="nav-right">
+        <div class="search-container" onclick="openSearch()">
+          <input type="text" placeholder="Search courses..." class="search-box" readonly>
+        </div>
+        <div class="mobile-search-icon" onclick="openSearch()">🔍</div>
+        <button id="themeToggle" class="theme-btn">🌙</button>
+        <div class="container">
+          <div class="profile">
+            <a href="profile.html"><img src="me1.jpg"></a>&nbsp;Soumaprit
+          </div>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div id="searchDialog" class="search-overlay">
+        <div class="search-dialog-box">
+          <div class="search-header">
+            <div class="search-input-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="mainSearchInput" placeholder="What do you want to learn?" autocomplete="off">
+            </div>
+            <button class="close-dialog" onclick="closeSearch()">&times;</button>
+          </div>
+
+          <div class="search-body">
+            <div class="search-filters">&nbsp;
+                <button class="filter-pill active" onclick="filterResults('All', this)">All</button>
+                <button class="filter-pill" onclick="filterResults('Course', this)">Courses</button>
+                <button class="filter-pill" onclick="filterResults('Blog', this)">Blog</button>
+                <button class="filter-pill" onclick="filterResults('Notes', this)">Notes</button>
+            </div>
+              <br>
+            <p class="results-info" id="resultsInfo">&nbsp;Showing results</p><br>
+              
+            <div id="searchOutput" class="search-results-list">
+              <p class="empty-msg">Start typing to see magic...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Search -->
+
+
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    </nav>
+    <!--------------- Navbar End -------------------------->
+
+
+    <!-- --------------- Contact Start -------------->
+    <div class="contact">
+
+      <!-------------- LEFT --------------->
+      <div class="left">
+        <h1>Contact Us</h1>
+        <p>We are available for questions, feedback, or collaboration opportunities.
+          Let us know how we can help! <br>
+          You can also contact us at soumaprit1019@gmail.com for any payment or
+          course access related queries.</p>
+        <p>Email: soumaprit1019@gmail.com</p>
+        <img src="me1.jpg">
+      </div>
+      <!---------- Left ----------------->
+
+      <!-------------- RIGHT ----------------->
+      <div class="right">
+        <form id="contactForm">
+
+          <div class="input-box">
+            <label>Name</label>
+            <input type="text" id="name" required>
+          </div>
+
+          <div class="input-box">
+            <label>Email</label>
+            <input type="email" id="email" required>
+          </div>
+
+          <div class="input-box">
+            <label>Phone</label>
+            <input type="text" id="phone" required>
+          </div>
+
+          <div class="input-box">
+            <label>Subject</label>
+            <input type="text" id="subject" required>
+          </div>
+
+          <div class="input-box">
+            <label>Message</label>
+            <textarea id="message" rows="4" required></textarea>
+          </div>
+
+          <div class="g-recaptcha" data-sitekey="6Lf7NJMsAAAAAF182NdmvmfEpYftdHBJxlnk1Jlw"></div>
+          <button type="submit" class="sendbtn">Send Message</button>
+
+        </form>
+      </div>
+      <!------------------ Right ----------------->
+
+    </div>
+    <!-------------------- Contact End --------------- -->
+
+
+
+    <!---------------------- FOOTER -------------------->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Main</h3>
+          <a href="Index.html">Home</a>
+          <a href="contact.html">Contact</a>
+          <a href="gear.html">My Gear</a>
+          <a href="profile.html">Creater Details</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Learn</h3>
+          <a href="course.html">Courses</a>
+          <a href="tutorials.html">Tutorials</a>
+          <a href="notes.html">Notes</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Social</h3>
+          <a href="https://www.youtube.com/@CodeWithSouma" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" class="ficon">
+            &nbsp;YouTube</a>
+          <a href="https://www.facebook.com/share/1A1caHFjbc" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="ficon">
+            &nbsp;Facebook</a>
+          <a href="https://www.instagram.com/computerworldai" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" class="ficon">
+            &nbsp;Instagram</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Made in Indian ❤️ Made by Soumaprit paul
+      </div>
+    </footer>
+    <!---------------------- Footer End -------------------->
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="contact.js"></script>
+
+  </body>
+</html>
