@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" type="image/x-icon" href="me1.jpg">
+        <title>Course || Word Course</title>
+
+        <!-- CSS Link -->
+        <link rel="stylesheet" href="Index-Style.css">
+        <style>
+.container { 
+display: flex; 
+gap: 30px; 
+max-width: 1100px; 
+margin: auto; 
+flex-wrap: wrap; 
+}
+
+/* বামদিকের ডিজাইন */
+.main-content { 
+    flex: 2; 
+    min-width: 350px; 
+}
+.learn-card { 
+    border: 1px solid #30363d; 
+    padding: 20px; 
+    border-radius: 10px; 
+    background: #0d1117; 
+    margin-bottom: 30px; 
+}
+.light .learn-card{
+    background: #8b949e;
+    border: none;
+    color: black;
+}
+.learn-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 10px; 
+    font-size: 14px; 
+    color: #8b949e; 
+    margin-top: 15px; 
+}
+.light .learn-grid{
+    color: #0b0f19;
+}
+/* কোর্সের কন্টেন্ট সেকশন */
+.course-content {
+    margin-top: 10px;
+    padding-bottom: 10px; /* নিচের দিকে অনেকখানি জায়গা খালি থাকবে */
+}
+
+.accordion-container {
+    max-width: 100%;
+}
+
+.acc-item {
+    border: 1px solid #30363d;
+    background: #161b22;
+    margin-bottom: 2px; /* চ্যাপ্টারগুলোর মাঝে সামান্য গ্যাপ */
+    transition: background 0.2s;
+}
+.light .acc-item{
+    background: #6e757d;
+    border: none;
+}
+
+.acc-header {
+    padding: 16px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+}
+
+.acc-header .title {
+    font-weight: 600;
+    color: #e6edf3;
+}
+
+
+.acc-header .info {
+    font-size: 13px;
+    color: #8b949e;
+}
+
+.light .acc-header .info{
+    color: #0b0f19;
+}
+
+.acc-body {
+    display: none;
+    background: #0d1117;
+    border-top: 1px solid #30363d;
+    padding: 10px 0;
+}
+
+.light .acc-body{
+    background: #6e757d;
+}
+
+/* লেকচারের লিস্টের স্টাইল */
+.lecture-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 25px;
+    font-size: 14px;
+    color: #c9d1d9;
+}
+
+.lecture-item:hover {
+    background: #161b22; /* লেকচারের ওপর মাউস নিলে হালকা কালার হবে */
+}
+
+/* নিচের এক্সট্রা স্পেস */
+.bottom-spacer {
+    height: 150px; /* এই হাইটটি আপনার নিচের খালি জায়গা নিয়ন্ত্রণ করবে */
+}
+
+/* মোবাইল রেসপন্সিভ */
+@media (max-width: 768px) {
+    .acc-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+
+/* সাইডবার */
+/* সাইডবার layout thik kora */
+.sidebar { 
+    flex: 1; 
+    min-width: 320px; 
+    /* height: 100% er poriborte align-self bebohar korun */
+    align-self: flex-start; 
+}
+
+/* Sticky card-er top distance thik kora */
+.sticky-card { 
+    background: #161b22; 
+    border: 1px solid #30363d; 
+    border-radius: 10px; 
+    padding: 20px; 
+    position: -webkit-sticky;  
+    position: sticky; 
+    top: 20px; /* Navbar thakle eta 70px-80px kore dite paren */
+    z-index: 100;
+}
+
+.light .sticky-card{
+    background: #6e757d;
+    border: none;
+}
+
+.preview-video { 
+    position: relative; 
+    cursor: pointer; 
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+.preview-video img { 
+    width: 100%; 
+    display: block; 
+}
+.play-btn { 
+    position: absolute; 
+    top: 50%; left: 50%; 
+    transform: translate(-50%, -50%); 
+    background: white; 
+    color: black; 
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 20px; 
+}
+.light .play-btn{
+    background: #0b0f19;
+    color: #e6edf3;
+}
+
+.price-section { 
+    margin: 20px 0; 
+}
+.price { 
+    font-size: 28px; 
+    font-weight: bold;
+}
+.old-price { 
+    font-size: 16px; 
+    text-decoration: line-through; 
+    color: #8b949e; 
+    margin-left: 10px; 
+}
+.light .old-price{
+    color: white;
+}
+
+.phone-box label { 
+    font-size: 13px; 
+    color: #8b949e; 
+}
+.light .phone-box label{
+    color: white;
+}
+.input-container { 
+    display: flex; 
+    border: 1px solid #30363d; 
+    border-radius: 5px; 
+    margin-top: 8px; 
+    background: #0b0f19; 
+}
+.code { 
+    padding: 12px; 
+    border-right: 1px solid #30363d; 
+    font-size: 13px; 
+}
+.light .code{
+    color: white;
+}
+.input-container input {
+     background: transparent;
+     border: none; 
+     color: white; 
+     padding: 12px; 
+     outline: none; 
+     width: 100%; 
+    }
+
+#payBtn { 
+    width: 100%; 
+    padding: 15px; 
+    margin-top: 15px; 
+    background: #3d5afe; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    font-weight: bold; 
+    cursor: pointer;
+}
+#payBtn:disabled { 
+    background: #30363d; 
+    cursor: not-allowed;
+}
+#err { 
+    color: #ff4d4d; 
+    font-size: 14px; 
+    margin-top: 5px; 
+    display: none; 
+}
+.access-text { 
+    text-align: center; 
+    font-size: 12px; 
+    color: #8b949e; 
+    margin-top: 10px;
+}
+.light .access-text{
+    color: white;
+}
+
+/* মোডাল */
+.modal { 
+    display: none; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.9); 
+    z-index: 1000; 
+    align-items: center; 
+    justify-content: center;
+}
+.modal-content { 
+    width: 90%;
+    max-width: 700px;
+}
+
+/* মোবাইল ভিউ */
+@media (max-width: 768px) {
+    .container { flex-direction: column; }
+    .learn-grid { grid-template-columns: 1fr; }
+    .sidebar { order: -1; } /* মোবাইল এ ভিডিও কার্ড আগে আসবে */
+}
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    width: 80%; 
+    max-width: 800px;
+}
+
+.close-btn {
+    position: absolute; 
+    top: -40px; 
+    right: 0;
+    color: white; 
+    font-size: 30px; 
+    cursor: pointer;
+}
+
+.video-container {
+    position: relative; 
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+}
+
+.video-container iframe {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+}
+.stats{
+    padding: 10px 20px;
+}
+        </style>
+
+    </head>
+    <body>
+
+        <!--------------- Navbar Start -------------------------->
+    <nav class="navbar">
+
+      <div class="logo">&lt;/&gt;CodeWithSouma</div>
+
+      <div class="nav-links" id="menu">
+        <a href="Index.html">Home</a>
+        <a href="course.html" class="active">Courses</a>
+        <a href="tutorials.html">Tutorials</a>
+        <a href="blog.html">Blog</a>
+        <a href="notes.html">Notes</a>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-right">
+        <div class="search-container" onclick="openSearch()">
+          <input type="text" placeholder="Search courses..." class="search-box" readonly>
+        </div>
+        <div class="mobile-search-icon" onclick="openSearch()">🔍</div>
+        <button id="themeToggle" class="theme-btn">🌙</button>
+        <div class="container">
+          <div class="profile">
+            <a href="profile.html"><img src="me1.jpg"></a>&nbsp;Soumaprit
+          </div>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div id="searchDialog" class="search-overlay">
+        <div class="search-dialog-box">
+          <div class="search-header">
+            <div class="search-input-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="mainSearchInput" placeholder="What do you want to learn?" autocomplete="off">
+            </div>
+            <button class="close-dialog" onclick="closeSearch()">&times;</button>
+          </div>
+
+          <div class="search-body">
+            <div class="search-filters">&nbsp;
+                <button class="filter-pill active" onclick="filterResults('All', this)">All</button>
+                <button class="filter-pill" onclick="filterResults('Course', this)">Courses</button>
+                <button class="filter-pill" onclick="filterResults('Blog', this)">Blog</button>
+                <button class="filter-pill" onclick="filterResults('Notes', this)">Notes</button>
+            </div>
+              <br>
+            <p class="results-info" id="resultsInfo">&nbsp;Showing results</p><br>
+              
+            <div id="searchOutput" class="search-results-list">
+              <p class="empty-msg">Start typing to see magic...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Search -->
+
+
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    </nav>
+    <!--------------- Navbar End -------------------------->
+        
+
+    <div class="container">
+        <div class="main-content">
+            <div class="learn-card">
+                <h2>What you'll learn</h2>
+                <div class="learn-grid">
+                    <p>✓ Professional Styling</p>
+                    <p>✓ Data Organization</p>
+                    <p>✓ Visual Design</p>
+                    <p>✓ Efficiency & Automation</p>
+                    <p>✓ Collaboration</p>
+                    <p>✓ Project-Based Learning</p>
+                </div>
+            </div>
+
+            <div class="course-content">
+                <h3>Course content</h3>
+                <p class="stats">12+ sections • 60 lectures </p>
+
+                <div class="accordion-container">
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <span class="title">Section 1: Introduction to Ms Word</span>
+                            <span class="info">3 lectures▼</span>
+                        </div>
+                        <div class="acc-body">
+                            <div class="lecture-item"><span>▶ What is MS Word?</span></div>
+                            <div class="lecture-item"><span>▶ Interface Basics</span></div>
+                            <div class="lecture-item"><span>▶ Saving Documents</span></div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <span class="title">Section 2: Basic Text Editing & Formatting</span>
+                            <span class="info">2 lectures ▼</span>
+                        </div>
+                        <div class="acc-body">
+                            <div class="lecture-item"><span>▶ Font Styling</span></div>
+                            <div class="lecture-item"><span>▶ Format Painter</span></div>
+                        </div>
+                    </div>
+
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <span class="title">Section 3: Paragraph Mastery</span>
+                            <span class="info">2 lectures ▼</span>
+                        </div>
+                        <div class="acc-body">
+                            <div class="lecture-item"><span>▶ Alignment</span></div>
+                            <div class="lecture-item"><span>▶ Lists</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <span class="title">Section 4: Working with Tables (Data Management)</span>
+                            <span class="info">2 lectures ▼</span>
+                        </div>
+                        <div class="acc-body">
+                            <div class="lecture-item"><span>▶ Creating Tables</span></div>
+                            <div class="lecture-item"><span>▶ Table Formulas</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <span class="title">Section 5: Graphics & Illustrations</span>
+                            <span class="info">2 lectures ▼</span>
+                        </div>
+                        <div class="acc-body">
+                            <div class="lecture-item"><span>▶ Inserting Pictures</span></div>
+                            <div class="lecture-item"><span>▶ SmartArt</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <span class="title">Section 6: Page Layout & Design</span>
+                            <span class="info">2 lectures ▼</span>
+                        </div>
+                        <div class="acc-body">
+                            <div class="lecture-item"><span>▶ Margins & Orientation</span></div>
+                            <div class="lecture-item"><span>▶ Section Breaks</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <span class="title">Section 7: Header, Footer & Page Numbering</span>
+                            <span class="info">1 lectures ▼</span>
+                        </div>
+                        <div class="acc-body">
+                            <div class="lecture-item"><span>▶ Header Footer </span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <span class="title">Section 8: References & Academic Tools</span>
+                            <span class="info">2 lectures ▼</span>
+                        </div>
+                        <div class="acc-body">
+                            <div class="lecture-item"><span>▶ Table of Contents</span></div>
+                            <div class="lecture-item"><span>▶ Footnotes</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <span class="title">Section 9: Mail Merge (Automation)</span>
+                            <span class="info">2 lectures ▼</span>
+                        </div>
+                        <div class="acc-body">
+                            <div class="lecture-item"><span>▶ Bulk Letters</span></div>
+                            <div class="lecture-item"><span>▶ Excel Integration</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <span class="title">Section 10: Review & Collaboration</span>
+                            <span class="info">2 lectures ▼</span>
+                        </div>
+                        <div class="acc-body">
+                            <div class="lecture-item"><span>▶ Track Changes</span></div>
+                            <div class="lecture-item"><span>▶ Protection</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <span class="title">Section 11: Advanced Productivity Hacks</span>
+                            <span class="info">2 lectures ▼</span>
+                        </div>
+                        <div class="acc-body">
+                            <div class="lecture-item"><span>▶ Macros</span></div>
+                            <div class="lecture-item"><span>▶ Templates</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="acc-item">
+                        <div class="acc-header" onclick="toggleAcc(this)">
+                            <span class="title">Section 12: Real-World Projects</span>
+                            <span class="info">3 lectures ▼</span>
+                        </div>
+                        <div class="acc-body">
+                            <div class="lecture-item"><span>▶ Professional Resume</span></div>
+                            <div class="lecture-item"><span>▶ Business Report</span></div>
+                            <div class="lecture-item"><span>▶ Newsletter</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bottom-spacer"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="sticky-card">
+                <div class="preview-video" onclick="openVideo()">
+                    <img src="word.png" alt="Thumb">
+                    <div class="play-btn">▶</div>
+                </div>
+
+                <div class="price-section">
+                    <span class="price">₹299</span>
+                    <span class="old-price">₹599</span>
+                </div>
+
+                <div class="phone-box">
+                    <label>Enter your Phone Number to continue</label>
+                    <div class="input-container">
+                        <span class="code">IN +91</span>
+                        <input type="number" id="phone" placeholder="Enter your phone number" oninput="validate()">
+                    </div>
+                    <p id="err">Please enter a valid 10-digit phone number</p>
+                </div>
+
+                <button id="payBtn" disabled onclick="startPayment()">Pay ₹299</button>
+                <p class="access-text">Purchase this course to get access</p>
+
+                <div class="features">
+                    <p><b>This course includes:</b></p>
+                    <p>✓ 25 lectures</p>
+                    <p>✓ Access on mobile and desktop</p>
+                    <p>✓ Access for 30 Days</p>
+                    <p>✓ Certificate of completion</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="vModal" class="modal" onclick="closeVideo()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <iframe id="videoPlayer" width="100%" height="400" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+
+
+<div id="paymentModal" class="search-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; align-items:center; justify-content:center;">
+    <div class="payment-box" style="background:#121212; padding:30px; border-radius:15px; border:1px solid #333; text-align:center; max-width:350px; width:90%;">
+        <button onclick="document.getElementById('paymentModal').style.display='none'" style="float:right; background:none; border:none; color:white; font-size:20px; cursor:pointer;">&times;</button>
+        <div id="qrArea">
+            </div>
+    </div>
+</div>
+
+
+
+
+
+    <!-------------------- Footer Start ----------------------->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-col">
+          <h3>Main</h3>
+          <a href="Index.html">Home</a>
+          <a href="contact.html">Contact</a>
+          <a href="gear.html">My Gear</a>
+          <a href="profile.html">Creater Details</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Learn</h3>
+          <a href="course.html">Courses</a>
+          <a href="tutorials.html">Tutorials</a>
+          <a href="notes.html">Notes</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Social</h3>
+          <a href="https://www.youtube.com/@CodeWithSouma" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" class="ficon">
+            &nbsp;YouTube
+          </a>
+          <a href="https://www.facebook.com/share/1A1caHFjbc" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" class="ficon">
+            &nbsp;Facebook
+          </a>
+          <a href="https://www.instagram.com/computerworldai" target="_blank">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" class="ficon">
+            &nbsp;Instagram
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Made in Indian ❤️ Made by Soumaprit paul
+      </div>
+    </footer>
+    <!-------------------- Footer End ----------------------->
+
+
+
+        <script>
+    // --- ১. কনফিগারেশন ---
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzSJVAbSyzTFn2s7VyL5KtZcK6dU4pk3vlUszw3iBS7JcdrF9GSpySbyvAnrLtA9G6MIA/exec'; 
+    const currentCourse = "Python Data Science Course";
+    // const accessDurationMinutes = 1; // টেস্ট করার জন্য ১ মিনিট দেওয়া হলো
+    const accessDurationDays = 30;
+    // --- ২. পেজ লোড হওয়ার সময় চেক ---
+    window.onload = function() {
+        updateUIIfPurchased();
+    };
+
+    // --- ৩. ফাংশনসমূহ ---
+
+    // ফোন নম্বর ভ্যালিডেশন
+    function validate() {
+        const num = document.getElementById('phone').value;
+        const btn = document.getElementById('payBtn');
+        const err = document.getElementById('err');
+        
+        if (num.length === 10) {
+            btn.disabled = false;
+            err.style.display = 'none';
+            // নম্বর টাইপ করার সাথে সাথে চেক করবে এই নম্বর দিয়ে আগে কেনা আছে কি না
+            updateUIIfPurchased(); 
+        } else {
+            btn.disabled = true;
+            if(num.length > 0) err.style.display = 'block';
+        }
+    }
+
+    // কোর্স কেনা থাকলে বাটন আপডেট (নম্বর অনুযায়ী)
+    function updateUIIfPurchased() {
+        const inputPhone = document.getElementById('phone').value;
+        const payBtn = document.getElementById('payBtn');
+        const accessText = document.querySelector('.access-text');
+        
+        // লোকাল স্টোরেজ থেকে ডাটা নেওয়া (যেখানে ফোন নম্বরও আছে)
+        const purchaseData = JSON.parse(localStorage.getItem("coursePurchases")) || {};
+
+        // যদি এই নির্দিষ্ট ফোন নম্বর দিয়ে এই কোর্সটি কেনা থাকে
+        if (purchaseData[inputPhone] && purchaseData[inputPhone].includes(currentCourse)) {
+            payBtn.innerText = "Continue Learning";
+            payBtn.disabled = false;
+            payBtn.style.background = "#28a745";
+            payBtn.onclick = () => window.location.href = "lectures.html";
+            accessText.innerText = "Access granted for " + inputPhone;
+        } else {
+            // যদি কেনা না থাকে, বাটন আগের অবস্থায় ফিরিয়ে আনা
+            if(inputPhone.length === 10) {
+                payBtn.innerText = "Pay ₹299";
+                payBtn.style.background = "#3d5afe";
+                payBtn.onclick = startPayment;
+                accessText.innerText = "Purchase this course to get access";
+            }
+        }
+    }
+
+    // পেমেন্ট মোডাল ওপেন
+    function startPayment() {
+        const phone = document.getElementById('phone').value;
+        const modal = document.getElementById('paymentModal');
+        const qrArea = document.getElementById('qrArea');
+        
+        modal.style.display = 'flex';
+        
+        const upiId = "soumapritpaul@oksbi"; 
+        const amount = 299;
+        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=${upiId}%26am=${amount}%26cu=INR%26tn=Course_${encodeURIComponent(currentCourse)}`;
+
+        qrArea.innerHTML = `
+            <h3 style="margin-bottom:15px; color:white;">Scan to Pay</h3>
+            <img src="${qrUrl}" style="background: white; padding: 10px; border-radius: 10px; width: 180px;">
+            <p style="color:#aaa; font-size:12px; margin-top:15px;">Phone: ${phone}</p>
+            <button id="verifyBtn" onclick="sendPaymentRequest('${phone}')" style="width:100%; padding:12px; background:#3d5afe; color:white; border:none; border-radius:5px; margin-top:15px; cursor:pointer; font-weight:bold;">Confirm Payment</button>
+            <div id="statusMsg" style="margin-top:10px; font-size:13px;"></div>
+        `;
+    }
+
+    function sendPaymentRequest(phone) {
+        const btn = document.getElementById('verifyBtn');
+        const status = document.getElementById('statusMsg');
+        btn.innerText = "Processing...";
+        btn.disabled = true;
+
+        const finalURL = `${scriptURL}?action=save&phone=${phone}&note=${encodeURIComponent(currentCourse)}`;
+        const img = new Image();
+        img.src = finalURL;
+
+        status.innerHTML = `<p style="color: #ffcc00;">⌛ Request sent! Admin verifying...</p>`;
+        
+        setTimeout(() => { checkCourseStatus(phone); }, 5000);
+    }
+
+    // সার্ভার চেক এবং নির্দিষ্ট নম্বর লক করা
+    function checkCourseStatus(phone) {
+    const checkInterval = setInterval(() => {
+        fetch(`${scriptURL}?action=check&phone=${phone}&note=${encodeURIComponent(currentCourse)}`)
+        .then(res => res.text())
+        .then(resStatus => {
+            if (resStatus.trim() === "Success") {
+                clearInterval(checkInterval);
+                
+                let purchaseData = JSON.parse(localStorage.getItem("coursePurchases")) || {};
+                if(!purchaseData[phone]) purchaseData[phone] = [];
+
+                // বর্তমান সময় + (১ মিনিট * ৬০ সেকেন্ড * ১০০০ মিলিসেকেন্ড)
+                const expiryTimestamp = new Date().getTime() + (accessDurationMinutes * 60 * 1000);
+
+                const courseIndex = purchaseData[phone].findIndex(c => c.name === currentCourse);
+                const courseDetails = { name: currentCourse, expiry: expiryTimestamp };
+
+                if (courseIndex > -1) {
+                    purchaseData[phone][courseIndex] = courseDetails;
+                } else {
+                    purchaseData[phone].push(courseDetails);
+                }
+
+                localStorage.setItem("coursePurchases", JSON.stringify(purchaseData));
+
+                document.getElementById('qrArea').innerHTML = `
+                    <div style="padding:10px;">
+                        <h2 style="color:#00ff00;">✅ Success!</h2>
+                        <p style="color:white;">Course access for 30 Days</p>
+                        <button onclick="window.location.href='lectures.html'" style="margin-top:20px; padding:12px 25px; background:#28a745; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">Start Learning</button>
+                    </div>
+                `;
+                updateUIIfPurchased();
+            }
+        })
+        .catch(e => console.log("Verifying..."));
+    }, 5000);
+}
+function updateUIIfPurchased() {
+    const inputPhone = document.getElementById('phone').value;
+    const payBtn = document.getElementById('payBtn');
+    const accessText = document.querySelector('.access-text');
+    
+    const purchaseData = JSON.parse(localStorage.getItem("coursePurchases")) || {};
+
+    if (purchaseData[inputPhone]) {
+        const courseInfo = purchaseData[inputPhone].find(c => c.name === currentCourse);
+
+        if (courseInfo) {
+            const currentTime = new Date().getTime();
+            
+            if (currentTime < courseInfo.expiry) {
+                payBtn.innerText = "Continue Learning";
+                payBtn.disabled = false;
+                payBtn.style.background = "#28a745";
+                payBtn.onclick = () => window.location.href = "wordlectures.html";
+                
+                // সেকেন্ড কাউন্টডাউন দেখার জন্য
+                const secondsLeft = Math.ceil((courseInfo.expiry - currentTime) / 1000);
+                accessText.innerText = `Access valid for ${secondsLeft} more seconds.`;
+                
+                // ১ সেকেন্ড পর পর UI আপডেট করবে (শুধু কাউন্টডাউন দেখার জন্য)
+                setTimeout(updateUIIfPurchased, 1000);
+                return;
+            } else {
+                accessText.innerText = "⚠️ Your Course access has expired!";
+            }
+        }
+    }
+
+    if(inputPhone.length === 10) {
+        payBtn.innerText = "Pay ₹299";
+        payBtn.style.background = "#3d5afe";
+        payBtn.onclick = startPayment;
+        if(!accessText.innerText.includes("expired")) {
+            accessText.innerText = "Purchase this course to get access";
+        }
+    }
+}
+
+    // মেনু ও ভিডিও কন্ট্রোল আগের মতোই থাকবে...
+    function toggleAcc(header) {
+        const body = header.nextElementSibling;
+        const isOpen = (body.style.display === "block");
+        body.style.display = isOpen ? "none" : "block";
+        header.style.background = isOpen ? "transparent" : "#1f242c";
+    }
+
+
+
+
+
+
+    // 1. Video open korar function
+function openVideo() {
+    // Modal-er HTML structure banano
+    const modalHTML = `
+        <div id="videoModal" class="modal-overlay" onclick="closeVideo(event)">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeVideo(event)">&times;</span>
+                <div class="video-container">
+                    <iframe id="promoVideo" 
+                        src="word.mp4?autoplay=1" 
+                        frameborder="0" 
+                        allow="autoplay; encrypted-media" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Body-te modal-ta add kora
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    // Background scroll bondho kora
+    document.body.style.overflow = 'hidden';
+}
+
+// 2. Video close korar function
+function closeVideo(event) {
+    const modal = document.getElementById('videoModal');
+    
+    // Jodi background overlay ba close button-e click hoy, tobei bondho hobe
+    if (event.target.id === 'videoModal' || event.target.className === 'close-btn') {
+        modal.remove();
+        document.body.style.overflow = 'auto'; // Scroll abar on kora
+    }
+}
+
+
+
+
+// ----------------- Search -------------------------
+
+
+// ১. আপনার সব ডেটা (Courses, Blog, Notes)
+const myData = [
+    // Course --------------------------------------------->
+    { title: "Smart MS Word Advanced Course",
+      type: "Course",
+      desc: "Learn Ms Word Zero to Advanced", 
+      link: "word-course.html" 
+    },
+    { title: "Advanced MS Excel Expert Course", 
+      type: "Course", 
+      desc: "Learn Ms Excel Zero to Advanced", 
+      link: "excel-course.html" 
+    },
+    { 
+      title: "Advanced MS Power Point Expert Course",
+       type: "Course", 
+       desc: "Learn Ms Power Point Zero to Advanced", 
+       link: "point-course.html" 
+    },
+    { 
+      title: "Complete HTML Course For Beginners",
+       type: "Course", 
+       desc: "Learn HTML Zero to Advanced", 
+       link: "html-course.html" 
+    },
+    { 
+      title: "Advanced CSS for Modern Web Design Course",
+       type: "Course", 
+       desc: "Learn CSS Zero to Advanced", 
+       link: "css-course.html" 
+    },
+    { 
+      title: "Complete Website Design with HTML & CSS",
+       type: "Course", 
+       desc: "Creat Project with HTML CSS", 
+       link: "htmlcssproject.html" 
+    },
+    { 
+      title: "Core JavaScript Traning Program",
+       type: "Course", 
+       desc: "Learn JavaScript Zero to Advanced", 
+       link: "js-course.html" 
+    },
+    { 
+      title: "Complete Website Design with HTML, CSS & JS",
+       type: "Course", 
+       desc: "Creat Project with HTML CSS JS", 
+       link: "htmlcssjsproject.html" 
+    },
+    { 
+      title: "Complete Backend with PHP",
+       type: "Course", 
+       desc: "Learn PHP Zero to Advanced", 
+       link: "php-course.html" 
+    },
+    { 
+      title: "Complete Website Design with HTML, CSS, JS & PHP",
+       type: "Course", 
+       desc: "Creat Project with HTML CSS JS PHP", 
+       link: "completproject.html" 
+    },
+    { 
+      title: "Complete Website Design with HTML, CSS, JS, PHP & AI",
+       type: "Course", 
+       desc: "Creat Project with HTML CSS JS PHP and AI", 
+       link: "completprojectai.html" 
+    },
+    { 
+      title: "Python Programing Traning",
+       type: "Course", 
+       desc: "Learn Python Programing", 
+       link: "python-course.html" 
+    },
+    // Course End ------------------------------------------>
+
+
+    // Notes Start ------------------------------------------>
+    { 
+      title: "Python Notes",
+       type: "Notes", 
+       desc: "Download Python Programing Note", 
+       link: "notes.html" 
+    },
+    { 
+      title: "C Notes",
+       type: "Notes", 
+       desc: "Download C Programing Note", 
+       link: "notes.html" 
+    },
+    { 
+      title: "HTML Notes",
+       type: "Notes", 
+       desc: "Download HTML Note", 
+       link: "notes.html" 
+    },
+    { 
+      title: "SQL Notes",
+       type: "Notes", 
+       desc: "Download SQL Note", 
+       link: "notes.html" 
+    },
+    { 
+      title: "CSS Notes",
+       type: "Notes", 
+       desc: "Download CSS Note", 
+       link: "notes.html" 
+    },
+    { 
+      title: "JavaScript Notes",
+       type: "Notes", 
+       desc: "Download JavaScript Note", 
+       link: "notes.html" 
+    },
+    { 
+      title: "MongoDB Notes",
+       type: "Notes", 
+       desc: "Download MongoDB Note", 
+       link: "notes.html" 
+    },
+    { 
+      title: "Ms Office Notes",
+       type: "Notes", 
+       desc: "Download Ms Office Note", 
+       link: "notes.html" 
+    },
+];
+
+let currentFilter = 'All'; // শুরুতে 'All' সিলেক্ট থাকবে
+
+// ২. ডায়ালগ বক্স ওপেন এবং ক্লোজ করার ফাংশন (অবশ্যই লাগবে)
+function openSearch() {
+    const dialog = document.getElementById('searchDialog');
+    dialog.style.display = 'block';
+    document.getElementById('mainSearchInput').focus(); // খোলার সাথে সাথে ইনপুটে ফোকাস হবে
+}
+
+function closeSearch() {
+    const dialog = document.getElementById('searchDialog');
+    dialog.style.display = 'none';
+}
+
+// বাইরের অন্ধকার জায়গায় ক্লিক করলে বন্ধ হবে
+window.onclick = function(event) {
+    const dialog = document.getElementById('searchDialog');
+    if (event.target == dialog) {
+        closeSearch();
+    }
+}
+
+// ৩. ফিল্টার বাটন হ্যান্ডেল করা
+function filterResults(category, btnElement) {
+    // সব বাটন থেকে 'active' ক্লাস সরানো
+    document.querySelectorAll('.filter-pill').forEach(btn => btn.classList.remove('active'));
+    // ক্লিক করা বাটনে 'active' ক্লাস যোগ করা
+    btnElement.classList.add('active');
+    
+    currentFilter = category;
+    performSearch(); // ফিল্টার বদলালে রেজাল্ট আপডেট হবে
+}
+
+// ৪. আসল সার্চ লজিক
+const mainSearchInput = document.getElementById('mainSearchInput');
+
+if(mainSearchInput) {
+    mainSearchInput.addEventListener('input', () => {
+        performSearch();
+    });
+}
+
+function performSearch() {
+    const val = mainSearchInput.value.toLowerCase();
+    const searchOutput = document.getElementById('searchOutput');
+
+    if(val === "") {
+        searchOutput.innerHTML = '<p style="text-align:center; padding:20px; color:#888;">Type something to search...</p>';
+        return;
+    }
+
+    // ফিল্টার: নাম মিলতে হবে + ক্যাটাগরি (All না হলে) মিলতে হবে
+    const filtered = myData.filter(item => {
+        const matchesSearch = item.title.toLowerCase().includes(val) || item.desc.toLowerCase().includes(val);
+        const matchesCategory = (currentFilter === 'All' || item.type === currentFilter);
+        return matchesSearch && matchesCategory;
+    });
+
+    renderSearch(filtered, val);
+}
+
+// ৫. রেজাল্টগুলো স্ক্রিনে দেখানো
+function renderSearch(results, term) {
+    const searchOutput = document.getElementById('searchOutput');
+    
+    if(results.length === 0) {
+        searchOutput.innerHTML = `<p style="text-align:center; padding:20px; color:white;">No results found in "${currentFilter}" for "${term}"</p>`;
+        return;
+    }
+
+    searchOutput.innerHTML = results.map(item => `
+        <a href="${item.link}" class="result-card" style="display: block; margin-bottom: 10px; padding: 15px; background: #1e1e1e; border-radius: 10px; text-decoration: none; border: 1px solid #333;">
+            <div class="result-content">
+                <span style="background: #3d5afe; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px;">${item.type}</span>
+                <h4 style="color: white; margin: 8px 0 5px 0; font-size: 16px;">${item.title}</h4>
+                <p style="color: #aaa; font-size: 13px; margin: 0;">${item.desc}</p>
+            </div>
+        </a>
+    `).join('');
+}
+
+
+
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+
+// DARK LIGHT MODE
+const toggle = document.getElementById("themeToggle");
+
+// load saved
+if(localStorage.getItem("theme") === "light"){
+  document.body.classList.add("light");
+  toggle.innerHTML="☀️";
+}
+
+toggle.onclick = () => {
+
+  document.body.classList.toggle("light");
+
+  if(document.body.classList.contains("light")){
+    toggle.innerHTML="☀️";
+    localStorage.setItem("theme","light");
+  }else{
+    toggle.innerHTML="🌙";
+    localStorage.setItem("theme","dark");
+  }
+
+};
+</script>
+    </body>
+</html>
