@@ -1,0 +1,170 @@
+h1{
+text-align:center;
+margin-bottom:40px;
+font-size:40px;
+}
+p{
+    color: #9ca3af;
+}
+/* GRID */
+.Gear{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+max-width:1300px;
+margin:auto;
+}
+
+/* CARD */
+.course{
+background:#020c1b;
+border:1px solid rgba(255,255,255,0.08);
+border-radius:12px;
+overflow:hidden;
+transition:.3s;
+position:relative;
+}
+
+.light .course{
+background:#282525;
+}
+
+.course:hover{
+transform:translateY(-8px);
+}
+
+/* IMAGE */
+.course img{
+width: 100%;
+height: 200px;
+object-fit:cover;
+}
+
+/* BADGE */
+.badge{
+position:absolute;
+top:10px;
+left:10px;
+background:#ef4444;
+padding:5px 10px;
+border-radius:6px;
+font-size:12px;
+font-weight:bold;
+}
+
+.light .badge{
+color: white;
+}
+
+.featured{
+position:absolute;
+top:10px;
+right:10px;
+background:#facc15;
+color:black;
+padding:5px 10px;
+border-radius:6px;
+font-size:12px;
+}
+
+/* CONTENT */
+.content{
+padding:18px;
+}
+
+.content h3{
+font-size:18px;
+margin-bottom:10px;
+}
+
+.light .content h3{
+    color: #ffffff;
+}
+
+.content p{
+color:#9ca3af;
+font-size:14px;
+margin-bottom:15px;
+}
+
+/* META */
+.meta{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+font-size:13px;
+color:#9ca3af;
+margin-bottom:20px;
+}
+
+/* PRICE */
+.price{
+font-size:20px;
+font-weight:bold;
+color: white;
+}
+
+.old{
+text-decoration:line-through;
+color:#9ca3af;
+font-size:14px;
+margin-left:8px;
+}
+
+/* BUTTON */
+.btn{
+margin-top:15px;
+width:100%;
+padding:12px;
+border: 2px solid aqua;
+border-radius: 8px;
+background: aqua;
+color: #010a17;
+cursor:pointer;
+font-weight:bold;
+}
+
+.light .btn{
+    margin-top:15px;
+    width:100%;
+    padding:12px;
+    border: 2px solid aqua;
+    border-radius: 8px;
+    background: aqua;
+    color: #010a17;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn:hover{
+background:black;
+color: aqua;
+}
+
+.light .btn:hover{
+background:black;
+color: aqua;
+}
+
+/* MOBILE */
+.Gear{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+max-width:1300px;
+margin:auto;
+}
+
+/* TABLET */
+@media (max-width:1024px){
+.Gear{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+/* MOBILE */
+@media (max-width:600px){
+.Gear{
+grid-template-columns:1fr;
+}
+}
