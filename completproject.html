@@ -644,11 +644,11 @@ flex-wrap: wrap;
                 let purchaseData = JSON.parse(localStorage.getItem("coursePurchases")) || {};
                 if(!purchaseData[phone]) purchaseData[phone] = [];
 
-                // বর্তমান সময় + (১ মিনিট * ৬০ সেকেন্ড * ১০০০ মিলিসেকেন্ড)
-                const expiryTimestamp = new Date().getTime() + (accessDurationMinutes * 60 * 1000);
+                // expiry calculate hobe diner upor vitti kore (30 Days)
+                const expiryTimestamp = new Date().getTime() + (accessDurationDays * 24 * 60 * 60 * 1000);
 
-                const courseIndex = purchaseData[phone].findIndex(c => c.name === currentCourse);
                 const courseDetails = { name: currentCourse, expiry: expiryTimestamp };
+                const courseIndex = purchaseData[phone].findIndex(c => c.name === currentCourse);
 
                 if (courseIndex > -1) {
                     purchaseData[phone][courseIndex] = courseDetails;
@@ -661,14 +661,13 @@ flex-wrap: wrap;
                 document.getElementById('qrArea').innerHTML = `
                     <div style="padding:10px;">
                         <h2 style="color:#00ff00;">✅ Success!</h2>
-                        <p style="color:white;">Course access for 30 Days</p>
-                        <button onclick="window.location.href='lectures.html'" style="margin-top:20px; padding:12px 25px; background:#28a745; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">Start Learning</button>
+                        <p style="color:white;">Course access granted for ${accessDurationDays} Days</p>
+                        <button onclick="window.location.href='htmllectures.html'" style="margin-top:20px; padding:12px 25px; background:#28a745; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">Start Learning</button>
                     </div>
                 `;
                 updateUIIfPurchased();
             }
         })
-        .catch(e => console.log("Verifying..."));
     }, 5000);
 }
 function updateUIIfPurchased() {
